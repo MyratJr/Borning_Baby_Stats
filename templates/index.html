@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main>
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+      {% for i in a1 %}
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{forloop.counter}}"></button>
+      {% endfor %}
+      </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{a0.image.url}}" class="bd-placeholder-img surat67">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>{{a0.title}}</h1>
+            <p>{{a0.about}}</p>
+          </div>
+        </div>
+      </div>
+      {% for i in a1 %}
+      <div class="carousel-item">
+        <img src="{{i.image.url}}" class="bd-placeholder-img surat67">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>{{i.title}}</h1>
+            <p>{{i.about}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="container marketing" style="color:#0d6efd">
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" src="{% static 'images/Untitled.png' %}" width="140" height="140">
+        <h2 class="fw-normal">Ähli dogulan bäbekler</h2>
+        <p>Biziň hassahanamyzda gündelik ortaça 50 bäbek dogulýar. Ondan soň biziň l*ukmanlarymyz bäbejikleri täze öýüne ugratmaga ýaramly bolýança mähirli ideg edýärler. Dogulan bäbejikleri görmek üçin aşakdaky "Giriň" düwmesine basyň.</p>
+        <p><a class="btn btn-primary" href="{% url "babies" 'all' %}">Giriň &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" src="{% static 'images/portrait-satisfied-doctor-pediatrician-wearing-medical-cap-surgical-mask-gown-rubber-gloves-standing-with-toddler-girl-her-arms-expressing-happiness-enjoying-help-little-patients_176532-16964.jpg' %}" width="140" height="140">
+        <h2 class="fw-normal">Biziň lukmanlarymyz</h2>
+        <p>Biziň hassahanamyzda işe höwesli, tejribesi baý, mähirli lukmanlar hereket edýär. Biziň lukmanlar bilen tanyşmak üçin aşakdaky "Giriň" düwmesine basyň.</p>
+        <p><a class="btn btn-primary" href="{% url 'doctors' 'ahli' %}">Giriň &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" src="{% static 'images/moscow-russia-march-2022-infant-incubator-box-modern-maternity-ward-medical-center-hospital_97694-14571.jpg' %}" width="140" height="140">
+        <h2 class="fw-normal">Biziň hassahanamyz</h2>
+        <p>Biziň hassahanamyz paýtagtymyz Aşgabat şäheriniň iň bir öňdebaryjy hassahanalarynyň biri bolup 2010-njy ýyldan bäri halkymyza kömek edip işläp gelýär. Biziň hassahanamyz bilen tanyşmak üçin aşakdaky "Giriň" düwmesine basyň.</p>
+        <p><a class="btn btn-primary" href="{% url "hospital" %}">Giriň &raquo;</a></p>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Döwrebap ýokary hilli lukmançylyk tehnologiýalary.</h2>
+        <p class="lead">Biziň hassahanamyzda ýaponiýanyň ýokary hilli lukmançylyk tehnologiýalary ulanylýar.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'images/26798070_2106.i039.007.S.m004.c13.modern pharmacy store isometric set.jpg' %}">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Täze dogulan bäbejiklere idealnyý arassaçylyk düzgünleri bilen ideg etmek.</h2>
+        <p class="lead">Biziň lukmanlarymyz täze dogulan bäbejiklere ähli arassaçylyk düzgünlerini doly we dogry berjaý edýärler.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+      <img>
+        <img src="{% static 'images/2302.q702.005.S.m005.c12.vaccination.jpg' %}" width="100%" height="100%">
+
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

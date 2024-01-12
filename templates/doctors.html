@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <link href="../static/dist/css/style_news.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <main>
+    <h1 class="slm nav-link py-4 px-2 px-lg-3 rounded bet" style="color:white">
+    {% if a2 %}
+    Ähli lukmanlar
+    {% elif a3 %}
+    Gije-daňdanky lukmanlar
+        {% elif a4 %}
+    Irden-günortanky lukmanlar
+        {% elif a5 %}
+    Agşamky lukmanlar
+    {% endif %}
+    </h1>
+        <section class="players container" id="player">
+        {% for i in a1 %}
+            <div class="player" style="border-radius:20px;background-color:#bbd6ff">
+                <img src="{{i.avatar.url}}" alt="Player Image" class="player-image" style="border-radius:15px;height:300px">
+                <a type="button" style="margin-top:5%" class="btn btn-primary">Ideg wagtynda dogulan bäbekler<i style="padding-left:5px;" class="fas fa-arrow-right"></i></a>
+                <h2 class="card-header-text" style="color:green">{{i.fullname}}</h2>
+                <p style="color:green">{{i.about}}</p>
+            </div>
+            {% endfor %}
+        </section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <nav class="navbar navbar-expand-md navbar-dark sdf">
+    <div class="container-fluid">
+      <div class="navbar-collapse" >
+      <div >
+          <ul class="navbar-nav ms-auto gach">
+              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" {% if not q1 %} href="{% url 'babies' 'all' %}" {% endif %}>Ähli bäbekler</a></li>
+              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" style="background-color: green;" {% if not q2 %} href="{% url 'babies' 'alive' %}" {% endif %}>Ýaşaýşa dowam</a></li>
+              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" style="background-color: red;" {% if not q3 %} href="{% url 'babies' 'not_alive' %}" {% endif %}>Ýaşaýşa dowam</a></li>
+          </ul>
+          </div>
+      </div>
+    </div>
+  </nav>
+
+    <div class="wrapper">
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12" style="padding:40px 150px 0px 150px">
+                                    <h1 style="color:blue">{% if w1 %}Ähli bäbekler{% endif %}</h1>
+                            <div class="card card-posts">
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table">
+                                        <thead>
+                                            <th>Suraty</th>
+                                            <th>Maşgala familiýasy</th>
+                                            <th>Dogulan senesi</th>
+                                            <th>Jynsy</th>
+                                            <th>Agramy</th>
+                                            <th>Lukmany</th>
+                                            <th>Ýaşaýşa dowam</th>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in w1 %}
+                                            <tr>
+                                                <td>
+                                                    <img src="{{i.avatar.url}}" width="70" height="70" style="border-radius:50px"/>
+                                                </td>
+                                                <a>
+                                                <td>{{i.surname}}</td>
+                                                <td>{{i.born_time}}</td>
+                                                <td>{{i.gender}}</td>
+                                                <td>
+                                                    {{i.weight}} kg
+                                                </td>
+                                                <td>{{i.babydoctor}}</td>
+                                                <td>
+                                                    <i class="fa fa-circle {% if i.is_alive %} text-success {% else %} text-danger {% endif %}"></i>
+                                                </td>
+                                                </a>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
