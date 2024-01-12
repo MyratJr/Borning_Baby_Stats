@@ -47,7 +47,7 @@ class Baby(models.Model):
     avatar = models.ImageField(upload_to="babies_images", verbose_name="Suraty")
     born_time = models.DateTimeField(verbose_name="Dogulan wagty")
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE, verbose_name="Jynsy")
-    weight = models.IntegerField(verbose_name="Agramy")
+    weight = models.FloatField(verbose_name="Agramy")
     babydoctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, verbose_name="Lukmany")
     is_alive = models.BooleanField(default=True, verbose_name="Ýaşaýşa dowam")
 

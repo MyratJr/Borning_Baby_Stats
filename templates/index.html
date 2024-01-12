@@ -31,11 +31,11 @@
       </div>
       {% endfor %}
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev" style="margin-left:5%">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next"  style="margin-right:5%">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -46,7 +46,7 @@
         <img class="bd-placeholder-img rounded-circle" src="{% static 'images/Untitled.png' %}" width="140" height="140">
         <h2 class="fw-normal">Ähli dogulan bäbekler</h2>
         <p>Biziň hassahanamyzda gündelik ortaça 50 bäbek dogulýar. Ondan soň biziň l*ukmanlarymyz bäbejikleri täze öýüne ugratmaga ýaramly bolýança mähirli ideg edýärler. Dogulan bäbejikleri görmek üçin aşakdaky "Giriň" düwmesine basyň.</p>
-        <p><a class="btn btn-primary" href="{% url "babies" 'all' %}">Giriň &raquo;</a></p>
+        <p><a class="btn btn-primary" href="{% url "babies" 'all' 0 %}">Giriň &raquo;</a></p>
       </div>
       <div class="col-lg-4">
         <img class="bd-placeholder-img rounded-circle" src="{% static 'images/portrait-satisfied-doctor-pediatrician-wearing-medical-cap-surgical-mask-gown-rubber-gloves-standing-with-toddler-girl-her-arms-expressing-happiness-enjoying-help-little-patients_176532-16964.jpg' %}" width="140" height="140">
@@ -85,6 +85,8 @@
 
       </div>
     </div>
+    <hr class="featurette-divider">
   </div>
 </main>
+
 {% endblock %}

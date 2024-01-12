@@ -156,10 +156,10 @@ body {
 
 @media (min-width:768px) {
     .gach {
-        padding-left: 0vw;
+        padding-left: 7.5vw;
     }
     .gach1 {
-        padding-left: 5vw;
+        padding-left: 6vw;
     }
     .bet {
         background-color: #0d6efd;
@@ -175,7 +175,8 @@ body {
         font-size: 150%;
     }
     .surat67 {
-        width: 100%;
+        width: 85%;
+        margin-left: 7.3%;
         height: 100%;
         border-radius: 40px;
         padding: 7vh 3vh 2vh 3vh;

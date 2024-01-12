@@ -1,14 +1,71 @@
 {% extends "base.html" %}
 {% load static %}
+{% load my_filters %}
 {% block content %}
+{% if s1 %}
+<div class="wrapper">
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12" style="padding:5% 9% 0% 9%">
+                    <h3 style="color:blue">Gözleg netijeleri</h3>
+                                    <h1 style="color:blue">{% if w1 %}Ähli bäbekler{% endif %}</h1>
+                            <div class="card card-posts">
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table">
+                                        <thead>
+                                            <th>Suraty</th>
+                                            <th>Maşgala familiýasy</th>
+                                            <th>Dogulan senesi</th>
+                                            <th>Jynsy</th>
+                                            <th>Agramy</th>
+                                            <th>Lukmany</th>
+                                            <th>Ýaşaýşa dowam</th>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in s1 %}
+                                            <tr>
+                                                <td>
+                                                    <img src="{{i.avatar.url}}" width="70" height="70" style="border-radius:50px"/>
+                                                </td>
+                                                <a>
+                                                <td>{{i.surname}}</td>
+                                                <td>{{i.born_time.year}}-nji ýyl <br>{{i.born_time.day}}-nji {{nn|get_item:i.born_time.month}}</td>
+                                                <td>{{i.gender}}</td>
+                                                <td>
+                                                    {{i.weight|floatformat:"-1"}} kg
+                                                </td>
+                                                <td>{{i.babydoctor}}</td>
+                                                <td>
+                                                    <i class="fa fa-circle {% if i.is_alive %} text-success {% else %} text-danger {% endif %}"></i>
+                                                </td>
+                                                </a>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+    <hr class="featurette-divider">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% else %}
   <nav class="navbar navbar-expand-md navbar-dark sdf">
     <div class="container-fluid">
       <div class="navbar-collapse" >
-      <div >
-          <ul class="navbar-nav ms-auto gach">
-              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" {% if not q1 %} href="{% url 'babies' 'all' %}" {% endif %}>Ähli bäbekler</a></li>
-              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" style="background-color: green;" {% if not q2 %} href="{% url 'babies' 'alive' %}" {% endif %}>Ýaşaýşa dowam</a></li>
-              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" style="background-color: red;" {% if not q3 %} href="{% url 'babies' 'not_alive' %}" {% endif %}>Ýaşaýşa dowam</a></li>
+      <div style="margin-left:-6.2%">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" {% if not q1 and ahli %} href="{% url 'babies' 'all' 0 %}" {% else %}{% if lukman %} href="{% url 'babies' 'all' lukman %}" {% endif %}{% endif %}>Ähli bäbekler</a></li>
+              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" style="background-color: green;" {% if not q2 and ahli %} href="{% url 'babies' 'alive' 0 %}" {% else %}{% if lukman %} href="{% url 'babies' 'alive' lukman %}" {% endif %} {% endif %}>Ýaşaýşa dowam</a></li>
+              <li class="nav-item mx-0 mx-lg-1 gach2"><a class="nav-link py-3 px-0 px-lg-3 rounded bet" style="background-color: red;" {% if not q3 and ahli %} href="{% url 'babies' 'not_alive' 0 %}"  {% else %}{% if lukman %} href="{% url 'babies' 'not_alive' lukman %}"{% endif %}  {% endif %}>Ýaşaýşa dowam</a></li>
           </ul>
           </div>
       </div>
@@ -20,7 +77,7 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12" style="padding:40px 150px 0px 150px">
+                        <div class="col-md-12" style="padding:2% 9% 0% 9%">
                                     <h1 style="color:blue">{% if w1 %}Ähli bäbekler{% endif %}</h1>
                             <div class="card card-posts">
                                 <div class="content table-responsive table-full-width">
@@ -42,10 +99,10 @@
                                                 </td>
                                                 <a>
                                                 <td>{{i.surname}}</td>
-                                                <td>{{i.born_time}}</td>
+                                                <td>{{i.born_time.year}}-nji ýyl <br>{{i.born_time.day}}-nji {{nn|get_item:i.born_time.month}}</td>
                                                 <td>{{i.gender}}</td>
                                                 <td>
-                                                    {{i.weight}} kg
+                                                    {{i.weight|floatformat:"-1"}} kg
                                                 </td>
                                                 <td>{{i.babydoctor}}</td>
                                                 <td>
@@ -59,11 +116,14 @@
 
                                 </div>
                             </div>
+    <hr class="featurette-divider">
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+    {% endif %}
 {% endblock %}

@@ -28,8 +28,9 @@
               <li class="nav-item mx-0 mx-lg-1 gach2"><a {% if not a0 %} href={% url 'index' %} {% endif %} class="nav-link py-3 px-0 px-lg-3 rounded" style="background-color:green;color:white;text-align:center">Baş sahypa</a></li>
           </ul>
           </div>
-        <form class="d-flex gach1" role="search">
-          <input class="form-control me-2" type="search" placeholder="Gözle" aria-label="Search" style="width:100%">
+        <form class="d-flex gach1" action={% url 'search' %} method="POST" role="search">
+        {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Gözle" aria-label="Search" style="width:100%" name="gozleg">
           <button class="btn btn-outline-primary" type="submit">Gözle</button>
         </form>
       </div>
@@ -38,10 +39,11 @@
 </header>
     {% block content %}
     {% endblock %}
-    <hr class="featurette-divider">
+    {% if not r5 %}
         <footer class="container">
     <p class="float-end"><a href="#" style="text-decoration:none">Ýokaryk</a></p>
   </footer>
+  {% endif %}
   </body>
-    <script src="../static/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'dist/js/bootstrap.bundle.min.js' %}"></script>
 </html>
